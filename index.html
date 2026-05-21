@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAMPAWN SMP Store</title>
+<title>Tampawn SMP Store</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
 
@@ -44,6 +44,12 @@ header p{margin-top:10px;font-weight:bold;}
     padding:20px;
     border:1px solid rgba(255,255,255,0.1);
     transition:0.3s;
+}
+
+.card img{
+    width:100%;
+    border-radius:12px;
+    margin:10px 0;
 }
 
 .card:hover{
@@ -92,6 +98,12 @@ header p{margin-top:10px;font-weight:bold;}
     border:1px solid #00ffaa;
 }
 
+.modal-content img{
+    width:100%;
+    border-radius:12px;
+    margin-bottom:10px;
+}
+
 .close{
     float:right;
     cursor:pointer;
@@ -106,7 +118,7 @@ ul{text-align:left;}
 <body>
 
 <header>
-    <h1>TampaWN SMP Store</h1>
+    <h1>tampawn SMP Store</h1>
     <p>Kits • VIP • Premium • Godly • Coins</p>
 </header>
 
@@ -115,6 +127,7 @@ ul{text-align:left;}
 <!-- FARMER -->
 <div class="card">
 <h2>🌾 Farmer Kit</h2>
+<img src="https://raw.githubusercontent.com/USERNAME/REPO/main/images/1.png">
 <div class="price">$5 Lifetime</div>
 <button class="btn details" onclick="openModal('farmer')">View Details</button>
 <a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
@@ -123,6 +136,7 @@ ul{text-align:left;}
 <!-- REDSTONE -->
 <div class="card">
 <h2>⚙️ Redstone Kit</h2>
+<img src="https://raw.githubusercontent.com/USERNAME/REPO/main/images/2.png">
 <div class="price">$5 Lifetime</div>
 <button class="btn details" onclick="openModal('redstone')">View Details</button>
 <a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
@@ -131,6 +145,7 @@ ul{text-align:left;}
 <!-- TOTEM -->
 <div class="card">
 <h2>☠️ Totem Kit</h2>
+<img src="https://raw.githubusercontent.com/USERNAME/REPO/main/images/3.png">
 <div class="price">$5 Lifetime</div>
 <button class="btn details" onclick="openModal('totem')">View Details</button>
 <a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
@@ -139,6 +154,7 @@ ul{text-align:left;}
 <!-- BUILDER -->
 <div class="card">
 <h2>🏗️ Builder Kit</h2>
+<img src="https://raw.githubusercontent.com/USERNAME/REPO/main/images/4.png">
 <div class="price">$5 Lifetime</div>
 <button class="btn details" onclick="openModal('builder')">View Details</button>
 <a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
@@ -147,6 +163,7 @@ ul{text-align:left;}
 <!-- VIP -->
 <div class="card">
 <h2>VIP</h2>
+<img src="https://raw.githubusercontent.com/USERNAME/REPO/main/images/5.png">
 <div class="price">$10 / Month</div>
 <button class="btn details" onclick="openModal('vip')">View Details</button>
 <a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
@@ -155,6 +172,7 @@ ul{text-align:left;}
 <!-- PREMIUM VIP -->
 <div class="card">
 <h2>👑 Premium VIP</h2>
+<img src="https://raw.githubusercontent.com/USERNAME/REPO/main/images/6.png">
 <div class="price">$25 / Month</div>
 <button class="btn details" onclick="openModal('premium')">View Details</button>
 <a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
@@ -163,6 +181,7 @@ ul{text-align:left;}
 <!-- GODLY -->
 <div class="card">
 <h2>💀 Godly Kit</h2>
+<img src="https://raw.githubusercontent.com/USERNAME/REPO/main/images/7.png">
 <div class="price">$60 Lifetime</div>
 <button class="btn details" onclick="openModal('godly')">View Details</button>
 <a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
@@ -171,6 +190,7 @@ ul{text-align:left;}
 <!-- COINS -->
 <div class="card">
 <h2>🪙 Tampcoins</h2>
+<img src="https://raw.githubusercontent.com/USERNAME/REPO/main/images/8.png">
 <div class="price">Currency</div>
 <button class="btn details" onclick="openModal('coins')">View Details</button>
 </div>
@@ -181,6 +201,9 @@ ul{text-align:left;}
 <div id="modal" class="modal">
 <div class="modal-content">
 <span class="close" onclick="closeModal()">✖</span>
+
+<img id="modalImg">
+
 <h2 id="title"></h2>
 <p id="desc"></p>
 <ul id="list"></ul>
@@ -195,36 +218,42 @@ let data = {
 
 farmer:{
 title:"🌾 Farmer Kit",
+img:"https://raw.githubusercontent.com/USERNAME/REPO/main/images/1.png",
 desc:"Permanent farming kit with storage.",
 list:["$5 Lifetime","2 Shulker Boxes","Weekly Claim (4x/month)"]
 },
 
 redstone:{
 title:"⚙️ Redstone Kit",
+img:"https://raw.githubusercontent.com/USERNAME/REPO/main/images/2.png",
 desc:"Technical redstone setup kit.",
 list:["$5 Lifetime","1 Shulker Box","Weekly Claim"]
 },
 
 totem:{
 title:"☠️ Totem Kit",
+img:"https://raw.githubusercontent.com/USERNAME/REPO/main/images/3.png",
 desc:"Survival protection kit.",
 list:["$5 Lifetime","2 Shulker Boxes","Totems Included"]
 },
 
 builder:{
 title:"🏗️ Builder Kit",
+img:"https://raw.githubusercontent.com/USERNAME/REPO/main/images/4.png",
 desc:"Creative building freedom in claims.",
 list:["$5 Lifetime","Fly in Claims","Builder Tools"]
 },
 
 vip:{
 title:"VIP",
+img:"https://raw.githubusercontent.com/USERNAME/REPO/main/images/5.png",
 desc:"Monthly rank with land perks.",
 list:["$10 Monthly","400x400 Claims","Weekly Kits"]
 },
 
 premium:{
 title:"👑 Premium VIP",
+img:"https://raw.githubusercontent.com/USERNAME/REPO/main/images/6.png",
 desc:"High tier rank with full rewards.",
 list:[
 "$25 Monthly",
@@ -240,6 +269,7 @@ list:[
 
 godly:{
 title:"💀 Godly Kit",
+img:"https://raw.githubusercontent.com/USERNAME/REPO/main/images/7.png",
 desc:"All kits included forever.",
 list:[
 "$60 Lifetime",
@@ -251,6 +281,7 @@ list:[
 
 coins:{
 title:"🪙 Tampcoins",
+img:"https://raw.githubusercontent.com/USERNAME/REPO/main/images/8.png",
 desc:"Server currency system.",
 list:[
 "500 = $2.50",
@@ -265,6 +296,8 @@ list:[
 
 document.getElementById("title").innerText = data[type].title;
 document.getElementById("desc").innerText = data[type].desc;
+
+document.getElementById("modalImg").src = data[type].img;
 
 let ul = document.getElementById("list");
 ul.innerHTML="";
