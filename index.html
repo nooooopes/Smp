@@ -16,6 +16,7 @@ body{
     color:white;
 }
 
+/* HEADER */
 header{
     text-align:center;
     padding:60px 20px;
@@ -25,6 +26,7 @@ header{
 
 header h1{font-size:50px;margin:0;}
 
+/* GRID */
 .grid{
     display:flex;
     flex-wrap:wrap;
@@ -33,6 +35,7 @@ header h1{font-size:50px;margin:0;}
     padding:30px;
 }
 
+/* CARD */
 .card{
     width:320px;
     background:#111;
@@ -47,12 +50,14 @@ header h1{font-size:50px;margin:0;}
     box-shadow:0 0 25px rgba(0,255,170,0.25);
 }
 
+/* DISPLAY IMAGE (FIXED) */
 .card img{
     width:100%;
-    height:180px;
-    object-fit:cover;
+    height:200px;
+    object-fit:contain; /* FIX: no cropping */
     border-radius:12px;
     margin:10px 0;
+    background:#000;
 }
 
 .price{
@@ -61,6 +66,7 @@ header h1{font-size:50px;margin:0;}
     margin:10px 0;
 }
 
+/* BUTTONS */
 .btn{
     display:block;
     margin-top:10px;
@@ -75,11 +81,12 @@ header h1{font-size:50px;margin:0;}
 .details{background:#333;color:white;}
 .buy{background:linear-gradient(90deg,#ff00cc,#00ccff,#00ff88,#ffee00);color:black;}
 
+/* MODAL */
 .modal{
     display:none;
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.85);
+    background:rgba(0,0,0,0.9);
     justify-content:center;
     align-items:center;
     z-index:999;
@@ -87,7 +94,7 @@ header h1{font-size:50px;margin:0;}
 
 .modal-content{
     width:90%;
-    max-width:650px;
+    max-width:700px;
     background:#111;
     padding:20px;
     border-radius:15px;
@@ -103,7 +110,7 @@ header h1{font-size:50px;margin:0;}
     font-size:18px;
 }
 
-/* IMAGE SLIDER */
+/* MODAL IMAGES FIXED */
 #imgContainer{
     display:flex;
     gap:10px;
@@ -112,12 +119,14 @@ header h1{font-size:50px;margin:0;}
 
 #imgContainer img{
     width:100%;
-    height:240px;
-    object-fit:cover;
-    border-radius:10px;
+    max-height:400px;
+    object-fit:contain; /* FIX: FULL IMAGE ALWAYS VISIBLE */
+    border-radius:12px;
     flex:0 0 100%;
+    background:#000;
 }
 
+/* LIST */
 ul{text-align:left;}
 
 </style>
@@ -161,37 +170,6 @@ ul{text-align:left;}
 <div class="price">$5 Lifetime</div>
 <button class="btn details" onclick="openModal('builder')">View Details</button>
 <a class="btn buy">Buy via Discord</a>
-</div>
-
-<div class="card">
-<h2>⭐ VIP</h2>
-<img src="display5.png">
-<div class="price">$10 Monthly</div>
-<button class="btn details" onclick="openModal('vip')">View Details</button>
-<a class="btn buy">Buy via Discord</a>
-</div>
-
-<div class="card">
-<h2>👑 Premium VIP</h2>
-<img src="display6.png">
-<div class="price">$25 Monthly</div>
-<button class="btn details" onclick="openModal('premium')">View Details</button>
-<a class="btn buy">Buy via Discord</a>
-</div>
-
-<div class="card">
-<h2>💀 Godly Kit</h2>
-<img src="display7.png">
-<div class="price">$60 Lifetime</div>
-<button class="btn details" onclick="openModal('godly')">View Details</button>
-<a class="btn buy">Buy via Discord</a>
-</div>
-
-<div class="card">
-<h2>🪙 Coins</h2>
-<img src="display8.png">
-<div class="price">Currency</div>
-<button class="btn details" onclick="openModal('coins')">View Details</button>
 </div>
 
 </div>
@@ -242,34 +220,6 @@ title:"🏗️ Builder Kit",
 imgs:["builder-1.png"],
 desc:"Fly in claims + building tools.",
 list:["$5 Lifetime","Fly Enabled","Builder Tools"]
-},
-
-vip:{
-title:"⭐ VIP",
-imgs:["vip-1.png","vip-2.png"],
-desc:"Monthly perks.",
-list:["$10 Monthly","400x400 Claims","Weekly Kits"]
-},
-
-premium:{
-title:"👑 Premium VIP",
-imgs:["premium-1.png","premium-2.png"],
-desc:"High tier VIP rewards.",
-list:["$25 Monthly","Netherite Kit","Elytra + Mace","Spawners"]
-},
-
-godly:{
-title:"💀 Godly Kit",
-imgs:["godly-1.png","godly-2.png"],
-desc:"All kits included.",
-list:["$60 Lifetime","All Kits","Future Updates"]
-},
-
-coins:{
-title:"🪙 Coins",
-imgs:["coins-1.png"],
-desc:"Server currency.",
-list:["500=$2.50","1000=$5","2000=$10","5000=$20 Bonus"]
 }
 };
 
@@ -281,11 +231,16 @@ document.getElementById("desc").innerText = kit.desc;
 const container = document.getElementById("imgContainer");
 container.innerHTML = "";
 
-/* SAFE IMAGE HANDLING (ONLY SHOW WHAT EXISTS) */
-kit.imgs.forEach(src=>{
-    if(!src) return;
+/* FIX: ONLY LOAD VALID IMAGES */
+kit.imgs
+.filter(src => src && src.trim() !== "")
+.forEach(src=>{
     const img = document.createElement("img");
     img.src = src;
+
+    // remove broken images completely
+    img.onerror = () => img.remove();
+
     container.appendChild(img);
 });
 
