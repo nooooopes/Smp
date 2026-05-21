@@ -16,18 +16,15 @@ body{
     color:white;
 }
 
-/* HEADER */
 header{
     text-align:center;
-    padding:70px 20px;
+    padding:60px 20px;
     background:linear-gradient(90deg,#ff00cc,#00ccff,#00ff88,#ffee00);
     color:black;
 }
 
-header h1{font-size:55px;margin:0;}
-header p{margin-top:10px;font-weight:bold;}
+header h1{font-size:50px;margin:0;}
 
-/* GRID */
 .grid{
     display:flex;
     flex-wrap:wrap;
@@ -36,9 +33,8 @@ header p{margin-top:10px;font-weight:bold;}
     padding:30px;
 }
 
-/* CARD */
 .card{
-    width:330px;
+    width:320px;
     background:#111;
     border-radius:18px;
     padding:20px;
@@ -46,24 +42,25 @@ header p{margin-top:10px;font-weight:bold;}
     transition:0.3s;
 }
 
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 25px rgba(0,255,170,0.25);
+}
+
 .card img{
     width:100%;
+    height:180px;
+    object-fit:cover;
     border-radius:12px;
     margin:10px 0;
 }
 
-.card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 0 25px rgba(0,255,170,0.3);
-}
-
 .price{
     color:#00ffcc;
-    font-size:22px;
+    font-size:20px;
     margin:10px 0;
 }
 
-/* BUTTONS */
 .btn{
     display:block;
     margin-top:10px;
@@ -78,12 +75,11 @@ header p{margin-top:10px;font-weight:bold;}
 .details{background:#333;color:white;}
 .buy{background:linear-gradient(90deg,#ff00cc,#00ccff,#00ff88,#ffee00);color:black;}
 
-/* MODAL */
 .modal{
     display:none;
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.8);
+    background:rgba(0,0,0,0.85);
     justify-content:center;
     align-items:center;
     z-index:999;
@@ -91,30 +87,35 @@ header p{margin-top:10px;font-weight:bold;}
 
 .modal-content{
     width:90%;
-    max-width:500px;
+    max-width:650px;
     background:#111;
     padding:20px;
     border-radius:15px;
     border:1px solid #00ffaa;
-}
-
-#imgContainer{
-    display:flex;
-    gap:10px;
-    overflow-x:auto;
-    margin-bottom:10px;
-}
-
-#imgContainer img{
-    width:100%;
-    border-radius:10px;
-    flex-shrink:0;
+    max-height:85vh;
+    overflow:auto;
 }
 
 .close{
     float:right;
     cursor:pointer;
     color:#ff5555;
+    font-size:18px;
+}
+
+/* IMAGE SLIDER */
+#imgContainer{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+}
+
+#imgContainer img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+    border-radius:10px;
+    flex:0 0 100%;
 }
 
 ul{text-align:left;}
@@ -125,79 +126,70 @@ ul{text-align:left;}
 <body>
 
 <header>
-    <h1>tampawn SMP Store</h1>
-    <p>Kits • VIP • Premium • Godly • Coins</p>
+    <h1>Tampawn SMP Store</h1>
 </header>
 
 <div class="grid">
 
-<!-- FARMER -->
 <div class="card">
 <h2>🌾 Farmer Kit</h2>
-<img src="/1.png">
+<img src="display1.png">
 <div class="price">$5 Lifetime</div>
 <button class="btn details" onclick="openModal('farmer')">View Details</button>
-<a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
+<a class="btn buy">Buy via Discord</a>
 </div>
 
-<!-- REDSTONE -->
 <div class="card">
 <h2>⚙️ Redstone Kit</h2>
-<img src="/2.png">
+<img src="display2.png">
 <div class="price">$5 Lifetime</div>
 <button class="btn details" onclick="openModal('redstone')">View Details</button>
-<a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
+<a class="btn buy">Buy via Discord</a>
 </div>
 
-<!-- TOTEM -->
 <div class="card">
 <h2>☠️ Totem Kit</h2>
-<img src="/3.png">
+<img src="display3.png">
 <div class="price">$5 Lifetime</div>
 <button class="btn details" onclick="openModal('totem')">View Details</button>
-<a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
+<a class="btn buy">Buy via Discord</a>
 </div>
 
-<!-- BUILDER -->
 <div class="card">
 <h2>🏗️ Builder Kit</h2>
-<img src="/4.png">
+<img src="display4.png">
 <div class="price">$5 Lifetime</div>
 <button class="btn details" onclick="openModal('builder')">View Details</button>
-<a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
+<a class="btn buy">Buy via Discord</a>
 </div>
 
-<!-- VIP -->
 <div class="card">
-<h2>VIP</h2>
-<img src="/5.png">
-<div class="price">$10 / Month</div>
+<h2>⭐ VIP</h2>
+<img src="display5.png">
+<div class="price">$10 Monthly</div>
 <button class="btn details" onclick="openModal('vip')">View Details</button>
-<a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
+<a class="btn buy">Buy via Discord</a>
 </div>
 
-<!-- PREMIUM VIP -->
 <div class="card">
 <h2>👑 Premium VIP</h2>
-<img src="/6.png">
-<div class="price">$25 / Month</div>
+<img src="display6.png">
+<div class="price">$25 Monthly</div>
 <button class="btn details" onclick="openModal('premium')">View Details</button>
-<a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
+<a class="btn buy">Buy via Discord</a>
 </div>
 
-<!-- GODLY -->
 <div class="card">
 <h2>💀 Godly Kit</h2>
-<img src="/7.png">
+<img src="display7.png">
 <div class="price">$60 Lifetime</div>
 <button class="btn details" onclick="openModal('godly')">View Details</button>
-<a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
+<a class="btn buy">Buy via Discord</a>
 </div>
 
-<!-- COINS -->
 <div class="card">
-<h2>🪙 Tampcoins</h2>
-<img src="/8.png">
+<h2>🪙 Coins</h2>
+<img src="display8.png">
 <div class="price">Currency</div>
 <button class="btn details" onclick="openModal('coins')">View Details</button>
 </div>
@@ -223,112 +215,93 @@ ul{text-align:left;}
 
 function openModal(type){
 
-let data = {
-
+const data = {
 farmer:{
 title:"🌾 Farmer Kit",
-imgs:["/1.png","/1b.png"],
-desc:"Permanent farming kit with storage.",
-list:["$5 Lifetime","2 Shulker Boxes","Weekly Claim (4x/month)"]
+imgs:["farmer-1.png","farmer-2.png"],
+desc:"Farming kit with storage.",
+list:["$5 Lifetime","2 Shulkers","Weekly Claims"]
 },
 
 redstone:{
 title:"⚙️ Redstone Kit",
-imgs:["/2.png"],
-desc:"Technical redstone setup kit.",
-list:["$5 Lifetime","1 Shulker Box","Weekly Claim"]
+imgs:["redstone-1.png"],
+desc:"Automation kit.",
+list:["$5 Lifetime","1 Shulker Box"]
 },
 
 totem:{
 title:"☠️ Totem Kit",
-imgs:["/3.png","/3b.png"],
+imgs:["totem-1.png","totem-2.png"],
 desc:"Survival protection kit.",
-list:["$5 Lifetime","2 Shulker Boxes","Totems Included"]
+list:["$5 Lifetime","Totems Included","2 Shulkers"]
 },
 
 builder:{
 title:"🏗️ Builder Kit",
-imgs:["/4.png"],
-desc:"Creative building freedom in claims.",
-list:["$5 Lifetime","Fly in Claims","Builder Tools"]
+imgs:["builder-1.png"],
+desc:"Fly in claims + building tools.",
+list:["$5 Lifetime","Fly Enabled","Builder Tools"]
 },
 
 vip:{
-title:"VIP",
-imgs:["/5.png","/5b.png"],
-desc:"Monthly rank with land perks.",
+title:"⭐ VIP",
+imgs:["vip-1.png","vip-2.png"],
+desc:"Monthly perks.",
 list:["$10 Monthly","400x400 Claims","Weekly Kits"]
 },
 
 premium:{
 title:"👑 Premium VIP",
-imgs:["/6.png"],
-desc:"High tier rank with full rewards.",
-list:[
-"$25 Monthly",
-"VIP OR 2 Kits",
-"Netherite Armor Kit",
-"Elytra + Mace",
-"3 Spawners",
-"15 Land Claims",
-"200 Tampcoins Daily",
-"50,000 Cash Daily"
-]
+imgs:["premium-1.png","premium-2.png"],
+desc:"High tier VIP rewards.",
+list:["$25 Monthly","Netherite Kit","Elytra + Mace","Spawners"]
 },
 
 godly:{
 title:"💀 Godly Kit",
-imgs:["/7.png"],
-desc:"All kits included forever.",
-list:[
-"$60 Lifetime",
-"All Kits Included",
-"Enderium Gear (future)",
-"All Updates Included"
-]
+imgs:["godly-1.png","godly-2.png"],
+desc:"All kits included.",
+list:["$60 Lifetime","All Kits","Future Updates"]
 },
 
 coins:{
-title:"🪙 Tampcoins",
-imgs:["/8.png"],
-desc:"Server currency system.",
-list:[
-"500 = $2.50",
-"1000 = $5",
-"1500 = $7.50",
-"2000 = $10",
-"5000 = $20 (bonus gift system)"
-]
+title:"🪙 Coins",
+imgs:["coins-1.png"],
+desc:"Server currency.",
+list:["500=$2.50","1000=$5","2000=$10","5000=$20 Bonus"]
 }
-
 };
 
-document.getElementById("title").innerText = data[type].title;
-document.getElementById("desc").innerText = data[type].desc;
+const kit = data[type];
 
-let container = document.getElementById("imgContainer");
+document.getElementById("title").innerText = kit.title;
+document.getElementById("desc").innerText = kit.desc;
+
+const container = document.getElementById("imgContainer");
 container.innerHTML = "";
 
-data[type].imgs.forEach(src=>{
-    let img = document.createElement("img");
+/* SAFE IMAGE HANDLING (ONLY SHOW WHAT EXISTS) */
+kit.imgs.forEach(src=>{
+    if(!src) return;
+    const img = document.createElement("img");
     img.src = src;
     container.appendChild(img);
 });
 
-let ul = document.getElementById("list");
-ul.innerHTML="";
+document.getElementById("list").innerHTML = "";
 
-data[type].list.forEach(i=>{
-let li = document.createElement("li");
-li.innerText = i;
-ul.appendChild(li);
+kit.list.forEach(i=>{
+    const li = document.createElement("li");
+    li.innerText = i;
+    document.getElementById("list").appendChild(li);
 });
 
-document.getElementById("modal").style.display="flex";
+document.getElementById("modal").style.display = "flex";
 }
 
 function closeModal(){
-document.getElementById("modal").style.display="none";
+document.getElementById("modal").style.display = "none";
 }
 
 </script>
