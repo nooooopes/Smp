@@ -1,23 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        h1 {
-            color: #333;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TampaWN SMP Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* BACKGROUND */
+body{
+    margin:0;
+    font-family:'Orbitron',sans-serif;
+    background: radial-gradient(circle at top, #111 0%, #050505 60%, #000 100%);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* RGB GLOW ORBS */
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    filter:blur(120px);
+    z-index:0;
+    opacity:0.6;
+}
+
+body::before{
+    background:rgba(255,0,200,0.15); /* pink */
+    top:-150px;
+    left:-150px;
+    animation:move1 10s infinite alternate;
+}
+
+body::after{
+    background:rgba(0,200,255,0.15); /* blue */
+    bottom:-150px;
+    right:-150px;
+    animation:move2 10s infinite alternate;
+}
+
+@keyframes move1{
+    from{transform:translate(0,0);}
+    to{transform:translate(200px,200px);}
+}
+
+@keyframes move2{
+    from{transform:translate(0,0);}
+    to{transform:translate(-200px,-150px);}
+}
+
+/* HEADER */
+header{
+    text-align:center;
+    padding:70px 20px;
+    background:linear-gradient(90deg,#ff00cc,#00ccff,#00ff88,#ffee00);
+    color:black;
+}
+
+header h1{
+    font-size:55px;
+    margin:0;
+}
+
+header p{
+    margin-top:10px;
+    font-weight:bold;
+}
+
+/* SECTION */
+.section{
+    text-align:center;
+    margin:50px 0 20px;
+    font-size:28px;
+    position:relative;
+    z-index:1;
+}
+
+/* GRID */
+.grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+    padding:20px;
+    position:relative;
+    z-index:1;
+}
+
+/* CARD */
+.card{
+    width:330px;
+    background:#111;
+    border-radius:18px;
+    padding:20px;
+    transition:0.3s;
+    border:2px solid transparent;
+    position:relative;
+}
+
+/* RGB BORDER GLOW */
+.card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:18px;
+    padding:2px;
+    background:linear-gradient(90deg,#ff00cc,#00ccff,#00ff88,#ffee00);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 30px rgba(255,0,200,0.3),
+               0 0 30px rgba(0,200,255,0.3);
+}
+
+/* PRICE */
+.price{
+    font-size:22px;
+    margin:10px 0;
+    background:linear-gradient(90deg,#ff00cc,#00ccff,#00ff88,#ffee00);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* LIST */
+ul{
+    padding-left:18px;
+}
+
+ul li{
+    margin-bottom:6px;
+    font-size:14px;
+}
+
+/* BUTTON */
+.buy{
+    display:block;
+    margin-top:15px;
+    padding:12px;
+    text-align:center;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+    color:black;
+    background:linear-gradient(90deg,#ff00cc,#00ccff,#00ff88,#ffee00);
+    transition:0.3s;
+}
+
+.buy:hover{
+    filter:brightness(1.2);
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:40px;
+    color:gray;
+    font-size:12px;
+    position:relative;
+    z-index:1;
+}
+
+</style>
 </head>
+
 <body>
-    <h1>Welcome to My Page</h1>
-    <p>This is a basic HTML template.</p>
+
+<header>
+    <h1>TampaWN SMP</h1>
+    <p>Neon Kits • VIP • Economy • Spawners</p>
+</header>
+
+<div class="section">🛒 Kits</div>
+
+<div class="grid">
+
+    <div class="card">
+        <h2>🌾 Farmer Kit</h2>
+        <div class="price">$5 Lifetime</div>
+        <ul>
+            <li>2 Shulker Boxes</li>
+            <li>Weekly Claims (4x/month)</li>
+            <li>Permanent Access</li>
+        </ul>
+        <a class="buy" href="https://discord.gg/YOURINVITE" target="_blank">
+        Contact Support to Buy
+        </a>
+    </div>
+
+    <div class="card">
+        <h2>⚙️ Redstone Kit</h2>
+        <div class="price">$5 Lifetime</div>
+        <ul>
+            <li>1 Shulker Box</li>
+            <li>Technical Items</li>
+            <li>Weekly Claims</li>
+        </ul>
+        <a class="buy" href="https://discord.gg/YOURINVITE" target="_blank">
+        Contact Support to Buy
+        </a>
+    </div>
+
+    <div class="card">
+        <h2>☠️ Totem Kit</h2>
+        <div class="price">$5 Lifetime</div>
+        <ul>
+            <li>2 Shulker Boxes</li>
+            <li>Totems Included</li>
+        </ul>
+        <a class="buy" href="https://discord.gg/YOURINVITE" target="_blank">
+        Contact Support to Buy
+        </a>
+    </div>
+
+</div>
+
+<div class="section">💎 VIP</div>
+
+<div class="grid">
+
+    <div class="card">
+        <h2>VIP</h2>
+        <div class="price">$10 / Month</div>
+        <ul>
+            <li>400x400 Land Claims</li>
+            <li>Weekly Rewards</li>
+        </ul>
+        <a class="buy" href="https://discord.gg/YOURINVITE" target="_blank">
+        Contact Support to Buy
+        </a>
+    </div>
+
+    <div class="card">
+        <h2>👑 Premium VIP</h2>
+        <div class="price">$25 / Month</div>
+        <ul>
+            <li>Netherite Kit</li>
+            <li>Spawners + Cash</li>
+            <li>15 Land Claims</li>
+        </ul>
+        <a class="buy" href="https://discord.gg/YOURINVITE" target="_blank">
+        Contact Support to Buy
+        </a>
+    </div>
+
+</div>
+
+<footer>
+© TampaWN SMP Store
+</footer>
+
 </body>
 </html>
