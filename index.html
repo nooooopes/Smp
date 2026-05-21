@@ -9,7 +9,7 @@
 
 <style>
 
-/* BACKGROUND */
+/* BASE */
 body{
     margin:0;
     font-family:'Orbitron',sans-serif;
@@ -18,7 +18,7 @@ body{
     overflow-x:hidden;
 }
 
-/* RGB GLOW ORBS */
+/* BACKGROUND GLOWS */
 body::before,
 body::after{
     content:"";
@@ -27,31 +27,19 @@ body::after{
     height:500px;
     filter:blur(120px);
     z-index:0;
-    opacity:0.6;
+    opacity:0.5;
 }
 
 body::before{
-    background:rgba(255,0,200,0.15); /* pink */
+    background:rgba(255,0,200,0.15);
     top:-150px;
     left:-150px;
-    animation:move1 10s infinite alternate;
 }
 
 body::after{
-    background:rgba(0,200,255,0.15); /* blue */
+    background:rgba(0,200,255,0.15);
     bottom:-150px;
     right:-150px;
-    animation:move2 10s infinite alternate;
-}
-
-@keyframes move1{
-    from{transform:translate(0,0);}
-    to{transform:translate(200px,200px);}
-}
-
-@keyframes move2{
-    from{transform:translate(0,0);}
-    to{transform:translate(-200px,-150px);}
 }
 
 /* HEADER */
@@ -60,6 +48,8 @@ header{
     padding:70px 20px;
     background:linear-gradient(90deg,#ff00cc,#00ccff,#00ff88,#ffee00);
     color:black;
+    position:relative;
+    z-index:1;
 }
 
 header h1{
@@ -98,39 +88,26 @@ header p{
     background:#111;
     border-radius:18px;
     padding:20px;
+    border:1px solid rgba(255,255,255,0.1);
     transition:0.3s;
-    border:2px solid transparent;
     position:relative;
 }
 
-/* RGB BORDER GLOW */
-.card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    border-radius:18px;
-    padding:2px;
-    background:linear-gradient(90deg,#ff00cc,#00ccff,#00ff88,#ffee00);
-    -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 25px rgba(0,255,170,0.25);
 }
 
-.card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 30px rgba(255,0,200,0.3),
-               0 0 30px rgba(0,200,255,0.3);
+/* TITLE */
+.card h2{
+    margin:0 0 10px;
 }
 
 /* PRICE */
 .price{
     font-size:22px;
     margin:10px 0;
-    background:linear-gradient(90deg,#ff00cc,#00ccff,#00ff88,#ffee00);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+    color:#00ffcc;
 }
 
 /* LIST */
@@ -141,6 +118,7 @@ ul{
 ul li{
     margin-bottom:6px;
     font-size:14px;
+    opacity:0.9;
 }
 
 /* BUTTON */
@@ -193,9 +171,7 @@ footer{
             <li>Weekly Claims (4x/month)</li>
             <li>Permanent Access</li>
         </ul>
-        <a class="buy" href="https://discord.gg/YOURINVITE" target="_blank">
-        Contact Support to Buy
-        </a>
+        <a class="buy" href="https://discord.gg/kwXd3WwY9T" target="_blank">Contact Support to Buy</a>
     </div>
 
     <div class="card">
@@ -206,9 +182,7 @@ footer{
             <li>Technical Items</li>
             <li>Weekly Claims</li>
         </ul>
-        <a class="buy" href="https://discord.gg/YOURINVITE" target="_blank">
-        Contact Support to Buy
-        </a>
+        <a class="buy" href="https://discord.gg/kwXd3WwY9T" target="_blank">Contact Support to Buy</a>
     </div>
 
     <div class="card">
@@ -218,9 +192,7 @@ footer{
             <li>2 Shulker Boxes</li>
             <li>Totems Included</li>
         </ul>
-        <a class="buy" href="https://discord.gg/YOURINVITE" target="_blank">
-        Contact Support to Buy
-        </a>
+        <a class="buy" href="https://discord.gg/kwXd3WwY9T" target="_blank">Contact Support to Buy</a>
     </div>
 
 </div>
@@ -236,9 +208,7 @@ footer{
             <li>400x400 Land Claims</li>
             <li>Weekly Rewards</li>
         </ul>
-        <a class="buy" href="https://discord.gg/YOURINVITE" target="_blank">
-        Contact Support to Buy
-        </a>
+        <a class="buy" href="https://discord.gg/kwXd3WwY9T" target="_blank">Contact Support to Buy</a>
     </div>
 
     <div class="card">
@@ -249,9 +219,7 @@ footer{
             <li>Spawners + Cash</li>
             <li>15 Land Claims</li>
         </ul>
-        <a class="buy" href="https://discord.gg/YOURINVITE" target="_blank">
-        Contact Support to Buy
-        </a>
+        <a class="buy" href="https://discord.gg/kwXd3WwY9T" target="_blank">Contact Support to Buy</a>
     </div>
 
 </div>
