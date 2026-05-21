@@ -9,37 +9,11 @@
 
 <style>
 
-/* BASE */
 body{
     margin:0;
     font-family:'Orbitron',sans-serif;
     background: radial-gradient(circle at top, #111 0%, #050505 60%, #000 100%);
     color:white;
-    overflow-x:hidden;
-}
-
-/* BACKGROUND GLOWS */
-body::before,
-body::after{
-    content:"";
-    position:fixed;
-    width:500px;
-    height:500px;
-    filter:blur(120px);
-    z-index:0;
-    opacity:0.5;
-}
-
-body::before{
-    background:rgba(255,0,200,0.15);
-    top:-150px;
-    left:-150px;
-}
-
-body::after{
-    background:rgba(0,200,255,0.15);
-    bottom:-150px;
-    right:-150px;
 }
 
 /* HEADER */
@@ -48,28 +22,10 @@ header{
     padding:70px 20px;
     background:linear-gradient(90deg,#ff00cc,#00ccff,#00ff88,#ffee00);
     color:black;
-    position:relative;
-    z-index:1;
 }
 
-header h1{
-    font-size:55px;
-    margin:0;
-}
-
-header p{
-    margin-top:10px;
-    font-weight:bold;
-}
-
-/* SECTION */
-.section{
-    text-align:center;
-    margin:50px 0 20px;
-    font-size:28px;
-    position:relative;
-    z-index:1;
-}
+header h1{font-size:55px;margin:0;}
+header p{margin-top:10px;font-weight:bold;}
 
 /* GRID */
 .grid{
@@ -77,9 +33,7 @@ header p{
     flex-wrap:wrap;
     justify-content:center;
     gap:25px;
-    padding:20px;
-    position:relative;
-    z-index:1;
+    padding:30px;
 }
 
 /* CARD */
@@ -90,64 +44,61 @@ header p{
     padding:20px;
     border:1px solid rgba(255,255,255,0.1);
     transition:0.3s;
-    position:relative;
 }
 
 .card:hover{
     transform:translateY(-8px);
-    box-shadow:0 0 25px rgba(0,255,170,0.25);
+    box-shadow:0 0 25px rgba(0,255,170,0.3);
 }
 
-/* TITLE */
-.card h2{
-    margin:0 0 10px;
-}
-
-/* PRICE */
 .price{
+    color:#00ffcc;
     font-size:22px;
     margin:10px 0;
-    color:#00ffcc;
 }
 
-/* LIST */
-ul{
-    padding-left:18px;
-}
-
-ul li{
-    margin-bottom:6px;
-    font-size:14px;
-    opacity:0.9;
-}
-
-/* BUTTON */
-.buy{
+/* BUTTONS */
+.btn{
     display:block;
-    margin-top:15px;
+    margin-top:10px;
     padding:12px;
-    text-align:center;
-    text-decoration:none;
     border-radius:10px;
-    font-weight:bold;
-    color:black;
-    background:linear-gradient(90deg,#ff00cc,#00ccff,#00ff88,#ffee00);
-    transition:0.3s;
-}
-
-.buy:hover{
-    filter:brightness(1.2);
-}
-
-/* FOOTER */
-footer{
     text-align:center;
-    padding:40px;
-    color:gray;
-    font-size:12px;
-    position:relative;
-    z-index:1;
+    cursor:pointer;
+    font-weight:bold;
+    border:none;
 }
+
+.details{background:#333;color:white;}
+.buy{background:linear-gradient(90deg,#ff00cc,#00ccff,#00ff88,#ffee00);color:black;}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.8);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.modal-content{
+    width:90%;
+    max-width:500px;
+    background:#111;
+    padding:20px;
+    border-radius:15px;
+    border:1px solid #00ffaa;
+}
+
+.close{
+    float:right;
+    cursor:pointer;
+    color:#ff5555;
+}
+
+ul{text-align:left;}
 
 </style>
 </head>
@@ -155,78 +106,183 @@ footer{
 <body>
 
 <header>
-    <h1>TampaWN SMP</h1>
-    <p>Neon Kits • VIP • Economy • Spawners</p>
+    <h1>TampaWN SMP Store</h1>
+    <p>Kits • VIP • Premium • Godly • Coins</p>
 </header>
 
-<div class="section">🛒 Kits</div>
-
 <div class="grid">
 
-    <div class="card">
-        <h2>🌾 Farmer Kit</h2>
-        <div class="price">$5 Lifetime</div>
-        <ul>
-            <li>2 Shulker Boxes</li>
-            <li>Weekly Claims (4x/month)</li>
-            <li>Permanent Access</li>
-        </ul>
-        <a class="buy" href="https://discord.gg/kwXd3WwY9T" target="_blank">Contact Support to Buy</a>
-    </div>
+<!-- FARMER -->
+<div class="card">
+<h2>🌾 Farmer Kit</h2>
+<div class="price">$5 Lifetime</div>
+<button class="btn details" onclick="openModal('farmer')">View Details</button>
+<a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
+</div>
 
-    <div class="card">
-        <h2>⚙️ Redstone Kit</h2>
-        <div class="price">$5 Lifetime</div>
-        <ul>
-            <li>1 Shulker Box</li>
-            <li>Technical Items</li>
-            <li>Weekly Claims</li>
-        </ul>
-        <a class="buy" href="https://discord.gg/kwXd3WwY9T" target="_blank">Contact Support to Buy</a>
-    </div>
+<!-- REDSTONE -->
+<div class="card">
+<h2>⚙️ Redstone Kit</h2>
+<div class="price">$5 Lifetime</div>
+<button class="btn details" onclick="openModal('redstone')">View Details</button>
+<a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
+</div>
 
-    <div class="card">
-        <h2>☠️ Totem Kit</h2>
-        <div class="price">$5 Lifetime</div>
-        <ul>
-            <li>2 Shulker Boxes</li>
-            <li>Totems Included</li>
-        </ul>
-        <a class="buy" href="https://discord.gg/kwXd3WwY9T" target="_blank">Contact Support to Buy</a>
-    </div>
+<!-- TOTEM -->
+<div class="card">
+<h2>☠️ Totem Kit</h2>
+<div class="price">$5 Lifetime</div>
+<button class="btn details" onclick="openModal('totem')">View Details</button>
+<a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
+</div>
+
+<!-- BUILDER -->
+<div class="card">
+<h2>🏗️ Builder Kit</h2>
+<div class="price">$5 Lifetime</div>
+<button class="btn details" onclick="openModal('builder')">View Details</button>
+<a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
+</div>
+
+<!-- VIP -->
+<div class="card">
+<h2>VIP</h2>
+<div class="price">$10 / Month</div>
+<button class="btn details" onclick="openModal('vip')">View Details</button>
+<a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
+</div>
+
+<!-- PREMIUM VIP -->
+<div class="card">
+<h2>👑 Premium VIP</h2>
+<div class="price">$25 / Month</div>
+<button class="btn details" onclick="openModal('premium')">View Details</button>
+<a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
+</div>
+
+<!-- GODLY -->
+<div class="card">
+<h2>💀 Godly Kit</h2>
+<div class="price">$60 Lifetime</div>
+<button class="btn details" onclick="openModal('godly')">View Details</button>
+<a class="btn buy" href="https://discord.gg/YOURINVITE">Buy via Discord</a>
+</div>
+
+<!-- COINS -->
+<div class="card">
+<h2>🪙 Tampcoins</h2>
+<div class="price">Currency</div>
+<button class="btn details" onclick="openModal('coins')">View Details</button>
+</div>
 
 </div>
 
-<div class="section">💎 VIP</div>
-
-<div class="grid">
-
-    <div class="card">
-        <h2>VIP</h2>
-        <div class="price">$10 / Month</div>
-        <ul>
-            <li>400x400 Land Claims</li>
-            <li>Weekly Rewards</li>
-        </ul>
-        <a class="buy" href="https://discord.gg/kwXd3WwY9T" target="_blank">Contact Support to Buy</a>
-    </div>
-
-    <div class="card">
-        <h2>👑 Premium VIP</h2>
-        <div class="price">$25 / Month</div>
-        <ul>
-            <li>Netherite Kit</li>
-            <li>Spawners + Cash</li>
-            <li>15 Land Claims</li>
-        </ul>
-        <a class="buy" href="https://discord.gg/kwXd3WwY9T" target="_blank">Contact Support to Buy</a>
-    </div>
-
+<!-- MODAL -->
+<div id="modal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">✖</span>
+<h2 id="title"></h2>
+<p id="desc"></p>
+<ul id="list"></ul>
+</div>
 </div>
 
-<footer>
-© TampaWN SMP Store
-</footer>
+<script>
+
+function openModal(type){
+
+let data = {
+
+farmer:{
+title:"🌾 Farmer Kit",
+desc:"Permanent farming kit with storage.",
+list:["$5 Lifetime","2 Shulker Boxes","Weekly Claim (4x/month)"]
+},
+
+redstone:{
+title:"⚙️ Redstone Kit",
+desc:"Technical redstone setup kit.",
+list:["$5 Lifetime","1 Shulker Box","Weekly Claim"]
+},
+
+totem:{
+title:"☠️ Totem Kit",
+desc:"Survival protection kit.",
+list:["$5 Lifetime","2 Shulker Boxes","Totems Included"]
+},
+
+builder:{
+title:"🏗️ Builder Kit",
+desc:"Creative building freedom in claims.",
+list:["$5 Lifetime","Fly in Claims","Builder Tools"]
+},
+
+vip:{
+title:"VIP",
+desc:"Monthly rank with land perks.",
+list:["$10 Monthly","400x400 Claims","Weekly Kits"]
+},
+
+premium:{
+title:"👑 Premium VIP",
+desc:"High tier rank with full rewards.",
+list:[
+"$25 Monthly",
+"VIP OR 2 Kits",
+"Netherite Armor Kit",
+"Elytra + Mace",
+"3 Spawners",
+"15 Land Claims",
+"200 Tampcoins Daily",
+"50,000 Cash Daily"
+]
+},
+
+godly:{
+title:"💀 Godly Kit",
+desc:"All kits included forever.",
+list:[
+"$60 Lifetime",
+"All Kits Included",
+"Enderium Gear (future)",
+"All Updates Included"
+]
+},
+
+coins:{
+title:"🪙 Tampcoins",
+desc:"Server currency system.",
+list:[
+"500 = $2.50",
+"1000 = $5",
+"1500 = $7.50",
+"2000 = $10",
+"5000 = $20 (bonus gift system)"
+]
+}
+
+};
+
+document.getElementById("title").innerText = data[type].title;
+document.getElementById("desc").innerText = data[type].desc;
+
+let ul = document.getElementById("list");
+ul.innerHTML="";
+
+data[type].list.forEach(i=>{
+let li = document.createElement("li");
+li.innerText = i;
+ul.appendChild(li);
+});
+
+document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+</script>
 
 </body>
 </html>
