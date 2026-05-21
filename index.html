@@ -5,307 +5,300 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tampawn SMP Store</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
-
 <style>
-
-body{
-    margin:0;
-    font-family:'Orbitron',sans-serif;
-    background: radial-gradient(circle at top, #111 0%, #050505 60%, #000 100%);
-    color:white;
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f0f0f;
+  color: white;
 }
 
-/* HEADER */
-header{
-    text-align:center;
-    padding:60px 20px;
-    background:linear-gradient(90deg,#ff00cc,#00ccff,#00ff88,#ffee00);
-    color:black;
+h1 {
+  text-align: center;
+  padding: 20px;
 }
 
-header h1{font-size:50px;margin:0;}
+.section-title {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 22px;
+  color: #ffd700;
+}
 
 /* GRID */
-.grid{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:25px;
-    padding:30px;
+.kit-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
 }
 
-/* CARD */
-.card{
-    width:320px;
-    background:#111;
-    border-radius:18px;
-    padding:20px;
-    border:1px solid rgba(255,255,255,0.1);
-    transition:0.3s;
+.kit {
+  background: #1e1e1e;
+  width: 220px;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
 }
 
-.card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 0 25px rgba(0,255,170,0.25);
+.kit img {
+  width: 100%;
+  border-radius: 10px;
 }
 
-/* DISPLAY IMAGE (KIT-1 = DISPLAY) */
-.card img{
-    width:100%;
-    height:220px;
-    object-fit:contain;
-    background:#000;
-    border-radius:12px;
-    margin:10px 0;
+.kit button {
+  margin-top: 10px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
 }
-
-/* PRICE */
-.price{
-    color:#00ffcc;
-    font-size:20px;
-    margin:10px 0;
-}
-
-/* BUTTONS */
-.btn{
-    display:block;
-    margin-top:10px;
-    padding:12px;
-    border-radius:10px;
-    text-align:center;
-    cursor:pointer;
-    font-weight:bold;
-    border:none;
-}
-
-.details{background:#333;color:white;}
-.buy{background:linear-gradient(90deg,#ff00cc,#00ccff,#00ff88,#ffee00);color:black;}
 
 /* MODAL */
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.9);
-    justify-content:center;
-    align-items:center;
-    z-index:999;
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
 }
 
-.modal-content{
-    width:90%;
-    max-width:700px;
-    background:#111;
-    padding:20px;
-    border-radius:15px;
-    border:1px solid #00ffaa;
-    max-height:85vh;
-    overflow:auto;
+.modal-content {
+  background: #1e1e1e;
+  width: 380px;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
 }
 
-.close{
-    float:right;
-    cursor:pointer;
-    color:#ff5555;
-    font-size:18px;
+.modal-content img {
+  width: 100%;
+  border-radius: 10px;
 }
 
-/* MODAL IMAGES */
-#imgContainer{
-    display:flex;
-    gap:10px;
-    overflow-x:auto;
+.close {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
 }
 
-#imgContainer img{
-    width:100%;
-    height:260px;
-    object-fit:contain;
-    background:#000;
-    border-radius:12px;
-    flex:0 0 100%;
+/* COINS */
+.coins {
+  padding: 20px;
+  text-align: center;
+  background: #151515;
+  margin-top: 30px;
 }
-
-/* LIST */
-ul{text-align:left;}
-
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Tampawn SMP Store</h1>
-</header>
+<h1>🔥 Tampawn SMP Store</h1>
 
-<div class="grid">
+<!-- KITS -->
+<div class="section-title">💎 Permanent Kits</div>
+<div class="kit-container">
 
-<div class="card">
-<h2>🌾 Farmer Kit</h2>
+<div class="kit">
 <img src="farmer-1.png">
-<div class="price">$5 Lifetime</div>
-<button class="btn details" onclick="openModal('farmer')">View Details</button>
+<h3>Farmer</h3>
+<button onclick="openKit('farmer')">Details</button>
 </div>
 
-<div class="card">
-<h2>⚙️ Redstone Kit</h2>
+<div class="kit">
 <img src="redstone-1.png">
-<div class="price">$5 Lifetime</div>
-<button class="btn details" onclick="openModal('redstone')">View Details</button>
+<h3>Redstone</h3>
+<button onclick="openKit('redstone')">Details</button>
 </div>
 
-<div class="card">
-<h2>☠️ Totem Kit</h2>
+<div class="kit">
 <img src="totem-1.png">
-<div class="price">$5 Lifetime</div>
-<button class="btn details" onclick="openModal('totem')">View Details</button>
+<h3>Totem</h3>
+<button onclick="openKit('totem')">Details</button>
 </div>
 
-<div class="card">
-<h2>🏗️ Builder Kit</h2>
+<div class="kit">
 <img src="builder-1.png">
-<div class="price">$5 Lifetime</div>
-<button class="btn details" onclick="openModal('builder')">View Details</button>
+<h3>Builder</h3>
+<button onclick="openKit('builder')">Details</button>
 </div>
 
-<div class="card">
-<h2>⭐ VIP</h2>
+</div>
+
+<!-- VIP SECTION -->
+<div class="section-title">⭐ VIP & Premium</div>
+<div class="kit-container">
+
+<div class="kit">
 <img src="vip-1.png">
-<div class="price">$10 Monthly</div>
-<button class="btn details" onclick="openModal('vip')">View Details</button>
+<h3>VIP</h3>
+<button onclick="openKit('vip')">Details</button>
 </div>
 
-<div class="card">
-<h2>👑 Premium VIP</h2>
+<div class="kit">
 <img src="premium-1.png">
-<div class="price">$25 Monthly</div>
-<button class="btn details" onclick="openModal('premium')">View Details</button>
+<h3>Premium VIP</h3>
+<button onclick="openKit('premium')">Details</button>
 </div>
 
-<div class="card">
-<h2>💀 Godly Kit</h2>
+<div class="kit">
 <img src="godly-1.png">
-<div class="price">$60 Lifetime</div>
-<button class="btn details" onclick="openModal('godly')">View Details</button>
+<h3>Godly</h3>
+<button onclick="openKit('godly')">Details</button>
 </div>
 
-<div class="card">
-<h2>🪙 Coins</h2>
-<img src="coins-1.png">
-<div class="price">Currency</div>
-<button class="btn details" onclick="openModal('coins')">View Details</button>
 </div>
 
+<!-- COINS -->
+<div class="coins">
+<h2>🪙 TampCoins Shop</h2>
+<p>500 = $2.50</p>
+<p>1000 = $5</p>
+<p>1500 = $7.50</p>
+<p>2000 = $10</p>
+<p>5000 = $20 (gift 500 coins to a player)</p>
 </div>
 
 <!-- MODAL -->
-<div id="modal" class="modal">
+<div id="kitModal" class="modal">
 <div class="modal-content">
+<span class="close" onclick="closeKit()">&times;</span>
 
-<span class="close" onclick="closeModal()">✖</span>
-
-<div id="imgContainer"></div>
-
-<h2 id="title"></h2>
-<p id="desc"></p>
-<ul id="list"></ul>
+<img id="kitImage">
+<h2 id="kitName"></h2>
+<h3 id="kitPrice"></h3>
+<div id="kitDetails"></div>
 
 </div>
 </div>
 
 <script>
+const kits = {
 
-function openModal(type){
-
-const data = {
-farmer:{
-title:"🌾 Farmer Kit",
-imgs:["farmer-1.png","farmer-2.png"],
-desc:"Farming kit with storage.",
-list:["$5 Lifetime","2 Shulkers","Weekly Claims"]
+farmer: {
+name: "Farmer Kit",
+price: "$5 Permanent",
+image: "farmer-1.png",
+details: `
+✔ Permanent Access<br>
+✔ 2 Shulker Boxes<br>
+✔ Farming tools included
+`
 },
 
-redstone:{
-title:"⚙️ Redstone Kit",
-imgs:["redstone-1.png"],
-desc:"Automation kit.",
-list:["$5 Lifetime","1 Shulker Box"]
+redstone: {
+name: "Redstone Kit",
+price: "$5 Permanent",
+image: "redstone-1.png",
+details: `
+✔ Permanent Access<br>
+✔ 1 Shulker Box<br>
+✔ Redstone utilities
+`
 },
 
-totem:{
-title:"☠️ Totem Kit",
-imgs:["totem-1.png","totem-2.png"],
-desc:"Survival protection kit.",
-list:["$5 Lifetime","Totems Included"]
+totem: {
+name: "Totem Kit",
+price: "$5 Permanent",
+image: "totem-1.png",
+details: `
+✔ Permanent Access<br>
+✔ 2 Shulker Boxes<br>
+✔ Survival gear
+`
 },
 
-builder:{
-title:"🏗️ Builder Kit",
-imgs:["builder-1.png"],
-desc:"Fly in claims + building tools.",
-list:["$5 Lifetime","Fly Enabled"]
+builder: {
+name: "Builder Kit",
+price: "$5 Permanent",
+image: "builder-1.png",
+details: `
+✔ Fly in land claims ONLY<br>
+✔ Creative-style building access<br>
+✔ No PvP advantage
+`
 },
 
-vip:{
-title:"⭐ VIP",
-imgs:["vip-1.png","vip-2.png"],
-desc:"Monthly perks.",
-list:["$10 Monthly","Claims","Weekly Kits"]
+vip: {
+name: "VIP",
+price: "$10 Monthly",
+image: "vip-1.png",
+details: `
+✔ Weekly claim kit (4x monthly)<br>
+✔ 400x400 land claim<br>
+✔ VIP perks & bonuses<br>
+✔ Permanent kit included per cycle
+`
 },
 
-premium:{
-title:"👑 Premium VIP",
-imgs:["premium-1.png","premium-2.png"],
-desc:"High tier rewards.",
-list:["$25 Monthly","Netherite Kit","Elytra + Mace"]
+premium: {
+name: "Premium VIP",
+price: "$25 Monthly",
+image: "premium-1.png",
+details: `
+✔ VIP access OR 2 permanent kits<br><br>
+
+<b>Weekly Claim Kit:</b><br>
+• Enchanted Netherite Armor set<br>
+• 2 stacks XP bottles<br>
+• Enchanted Netherite AIOT<br>
+• Bow + full enchant book<br>
+• Totems + Golden Apples<br>
+• Elytra + Mace<br>
+• 3 Creeper Spawners<br>
+• 3 Iron Golem Spawners<br><br>
+
+<b>Features:</b><br>
+• 15 land claims<br>
+• 200 daily Tampcoins<br>
+• 50,000 daily cash<br>
+• Premium cosmetics (future)<br>
+• NPC worker upgrades (future)<br>
+• 3x3 pickaxe coming soon
+`
 },
 
-godly:{
-title:"💀 Godly Kit",
-imgs:["godly-1.png","godly-2.png"],
-desc:"All kits included forever.",
-list:["$60 Lifetime","All Kits Included"]
-},
+godly: {
+name: "Godly Kit",
+price: "$60 Lifetime",
+image: "godly-1.png",
+details: `
+✔ Includes ALL kits (Farmer, Redstone, Totem, Builder, VIP, Premium VIP)<br>
+✔ Fully enchanted Enderium gear (future)<br>
+✔ Permanent access to all current & future kits (may change)<br>
+✔ Ultimate server rank<br><br>
 
-coins:{
-title:"🪙 Coins",
-imgs:["coins-1.png"],
-desc:"Server currency system.",
-list:["500=$2.50","1000=$5","2000=$10"]
+⚠ This kit will evolve as more systems are added
+`
 }
+
 };
 
-const kit = data[type];
+function openKit(id){
+const kit = kits[id];
 
-document.getElementById("title").innerText = kit.title;
-document.getElementById("desc").innerText = kit.desc;
-
-const container = document.getElementById("imgContainer");
-container.innerHTML = "";
-
-kit.imgs.forEach(src=>{
-    const img = document.createElement("img");
-    img.src = src;
-    img.onerror = () => img.remove();
-    container.appendChild(img);
-});
-
-document.getElementById("list").innerHTML = "";
-
-kit.list.forEach(i=>{
-    const li = document.createElement("li");
-    li.innerText = i;
-    document.getElementById("list").appendChild(li);
-});
-
-document.getElementById("modal").style.display = "flex";
+document.getElementById("kitModal").style.display = "block";
+document.getElementById("kitImage").src = kit.image;
+document.getElementById("kitName").innerHTML = kit.name;
+document.getElementById("kitPrice").innerHTML = kit.price;
+document.getElementById("kitDetails").innerHTML = kit.details;
 }
 
-function closeModal(){
-document.getElementById("modal").style.display = "none";
+function closeKit(){
+document.getElementById("kitModal").style.display = "none";
 }
 
+window.onclick = function(e){
+if(e.target == document.getElementById("kitModal")){
+closeKit();
+}
+}
 </script>
 
 </body>
