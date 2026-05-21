@@ -25,7 +25,7 @@ h1 {
   color: #ffd700;
 }
 
-/* GRID */
+/* KIT GRID */
 .kit-container {
   display: flex;
   flex-wrap: wrap;
@@ -57,20 +57,28 @@ h1 {
   cursor: pointer;
 }
 
-/* MODAL */
+/* MODAL FIX (IMPORTANT) */
 .modal {
   display: none;
   position: fixed;
-  z-index: 999;
+  z-index: 9999;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.85);
+
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.show {
+  display: flex;
 }
 
 .modal-content {
   background: #1e1e1e;
   width: 380px;
-  margin: 5% auto;
   padding: 20px;
   border-radius: 12px;
   text-align: center;
@@ -102,7 +110,7 @@ h1 {
 <h1>🔥 Tampawn SMP Store</h1>
 
 <!-- KITS -->
-<div class="section-title">💎 Permanent Kits</div>
+<div class="section-title">💎 Kits</div>
 <div class="kit-container">
 
 <div class="kit">
@@ -131,8 +139,7 @@ h1 {
 
 </div>
 
-<!-- VIP -->
-<div class="section-title">⭐ VIP & Premium</div>
+<div class="section-title">⭐ VIP</div>
 <div class="kit-container">
 
 <div class="kit">
@@ -162,7 +169,7 @@ h1 {
 <p>1000 = $5</p>
 <p>1500 = $7.50</p>
 <p>2000 = $10</p>
-<p>5000 = $20 (gift 500 coins)</p>
+<p>5000 = $20 (gift bonus)</p>
 </div>
 
 <!-- MODAL -->
@@ -188,7 +195,7 @@ image: "farmer-1.png",
 details: `
 ✔ Permanent Access<br>
 ✔ 2 Shulker Boxes<br>
-✔ Farming tools included<br>
+✔ Farming tools<br>
 `
 },
 
@@ -219,9 +226,9 @@ name: "Builder Kit",
 price: "$5 Permanent",
 image: "builder-1.png",
 details: `
-✔ Permanent Access<br>
-✔ Fly allowed inside land claims ONLY (creative flight inside claim)<br>
-✔ Building tools included<br>
+✔ Fly inside land claims ONLY<br>
+✔ Building tools<br>
+✔ No PvP advantage<br>
 `
 },
 
@@ -230,11 +237,9 @@ name: "VIP",
 price: "$10 Monthly",
 image: "vip-1.png",
 details: `
-⭐ VIP BENEFITS<br>
-✔ Weekly claim kit (4x per month)<br>
-✔ 400x400 land claim size<br>
-✔ VIP perks & rewards system<br>
-✔ Rotating permanent kit access<br>
+✔ Weekly kit (4x monthly)<br>
+✔ 400x400 land claim<br>
+✔ VIP perks<br>
 `
 },
 
@@ -243,29 +248,13 @@ name: "Premium VIP",
 price: "$25 Monthly",
 image: "premium-1.png",
 details: `
-⭐ PREMIUM VIP<br><br>
-
-✔ VIP OR 2 permanent kits of choice<br>
-✔ Premium VIP+ chat title<br><br>
-
-<b>Weekly Kit:</b><br>
-✔ Netherite Armor set (enchanted)<br>
-✔ 2 stacks XP bottles<br>
-✔ Netherite AIOT<br>
-✔ God enchant book bundle<br>
-✔ Bow + gear<br>
-✔ Totems + Golden Apples<br>
-✔ Elytra + Mace<br>
-✔ 3 Creeper Spawners<br>
-✔ 3 Iron Golem Spawners<br><br>
-
-<b>Features:</b><br>
+✔ VIP OR 2 kits of choice<br>
+✔ Weekly god-tier rewards<br>
 ✔ 15 land claims<br>
-✔ 200 daily TampCoins<br>
+✔ 200 daily coins<br>
 ✔ $50,000 daily cash<br>
 ✔ Cosmetics (future)<br>
 ✔ NPC upgrades (future)<br>
-✔ 3x3 pickaxe (coming soon)<br>
 `
 },
 
@@ -274,16 +263,10 @@ name: "Godly Kit",
 price: "$60 Lifetime",
 image: "godly-1.png",
 details: `
-👑 GODLY KIT<br><br>
-
-✔ Includes ALL kits:<br>
-Farmer, Redstone, Totem, Builder, VIP, Premium VIP<br><br>
-
+👑 ALL KITS INCLUDED<br>
+✔ Farmer, Redstone, Totem, Builder, VIP, Premium<br>
 ✔ Lifetime access<br>
-✔ Future kits included (subject to updates)<br>
-✔ Endgame rewards system evolving<br><br>
-
-⚠ This kit will grow with the server<br>
+✔ Future kit access included<br>
 `
 }
 
@@ -292,22 +275,23 @@ Farmer, Redstone, Totem, Builder, VIP, Premium VIP<br><br>
 function openKit(id){
 const kit = kits[id];
 
-document.getElementById("kitModal").style.display = "block";
 document.getElementById("kitImage").src = kit.image;
 document.getElementById("kitName").innerHTML = kit.name;
 document.getElementById("kitPrice").innerHTML = kit.price;
 document.getElementById("kitDetails").innerHTML = kit.details;
+
+document.getElementById("kitModal").classList.add("show");
 }
 
 function closeKit(){
-document.getElementById("kitModal").style.display = "none";
+document.getElementById("kitModal").classList.remove("show");
 }
 
 window.onclick = function(e){
-if(e.target == document.getElementById("kitModal")){
+if(e.target.id === "kitModal"){
 closeKit();
 }
-}
+};
 </script>
 
 </body>
