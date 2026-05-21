@@ -98,10 +98,17 @@ header p{margin-top:10px;font-weight:bold;}
     border:1px solid #00ffaa;
 }
 
-.modal-content img{
-    width:100%;
-    border-radius:12px;
+#imgContainer{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
     margin-bottom:10px;
+}
+
+#imgContainer img{
+    width:100%;
+    border-radius:10px;
+    flex-shrink:0;
 }
 
 .close{
@@ -200,13 +207,15 @@ ul{text-align:left;}
 <!-- MODAL -->
 <div id="modal" class="modal">
 <div class="modal-content">
+
 <span class="close" onclick="closeModal()">✖</span>
 
-<img id="modalImg">
+<div id="imgContainer"></div>
 
 <h2 id="title"></h2>
 <p id="desc"></p>
 <ul id="list"></ul>
+
 </div>
 </div>
 
@@ -218,42 +227,42 @@ let data = {
 
 farmer:{
 title:"🌾 Farmer Kit",
-img:"/1.png",
+imgs:["/1.png","/1b.png"],
 desc:"Permanent farming kit with storage.",
 list:["$5 Lifetime","2 Shulker Boxes","Weekly Claim (4x/month)"]
 },
 
 redstone:{
 title:"⚙️ Redstone Kit",
-img:"/2.png",
+imgs:["/2.png"],
 desc:"Technical redstone setup kit.",
 list:["$5 Lifetime","1 Shulker Box","Weekly Claim"]
 },
 
 totem:{
 title:"☠️ Totem Kit",
-img:"/3.png",
+imgs:["/3.png","/3b.png"],
 desc:"Survival protection kit.",
 list:["$5 Lifetime","2 Shulker Boxes","Totems Included"]
 },
 
 builder:{
 title:"🏗️ Builder Kit",
-img:"/4.png",
+imgs:["/4.png"],
 desc:"Creative building freedom in claims.",
 list:["$5 Lifetime","Fly in Claims","Builder Tools"]
 },
 
 vip:{
 title:"VIP",
-img:"/5.png",
+imgs:["/5.png","/5b.png"],
 desc:"Monthly rank with land perks.",
 list:["$10 Monthly","400x400 Claims","Weekly Kits"]
 },
 
 premium:{
 title:"👑 Premium VIP",
-img:"/6.png",
+imgs:["/6.png"],
 desc:"High tier rank with full rewards.",
 list:[
 "$25 Monthly",
@@ -269,7 +278,7 @@ list:[
 
 godly:{
 title:"💀 Godly Kit",
-img:"/7.png",
+imgs:["/7.png"],
 desc:"All kits included forever.",
 list:[
 "$60 Lifetime",
@@ -281,7 +290,7 @@ list:[
 
 coins:{
 title:"🪙 Tampcoins",
-img:"/8.png",
+imgs:["/8.png"],
 desc:"Server currency system.",
 list:[
 "500 = $2.50",
@@ -296,7 +305,15 @@ list:[
 
 document.getElementById("title").innerText = data[type].title;
 document.getElementById("desc").innerText = data[type].desc;
-document.getElementById("modalImg").src = data[type].img;
+
+let container = document.getElementById("imgContainer");
+container.innerHTML = "";
+
+data[type].imgs.forEach(src=>{
+    let img = document.createElement("img");
+    img.src = src;
+    container.appendChild(img);
+});
 
 let ul = document.getElementById("list");
 ul.innerHTML="";
